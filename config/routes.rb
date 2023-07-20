@@ -3,8 +3,8 @@ Rails.application.routes.draw do
     sessions:      'admin/sessions',
   }
   devise_for :customers, skip: [:passwords], controllers: {
-    sessions:      'customers/sessions',
-    registrations: 'customers/registrations'
+    sessions:      'public/sessions',
+    registrations: 'public/registrations'
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
