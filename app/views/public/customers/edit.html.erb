@@ -1,0 +1,37 @@
+<h4>会員情報編集</h4>
+
+<%= form_with model: @user do |f| %>
+<div class="field">
+    名前
+    <%= f.text_field :first_name %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    フリガナ
+    <%= f.text_field :first_name_kana %>
+    <%= f.text_field :last_name_kana %>
+  </div>
+
+  <div class="field">
+    郵便番号
+    <%= f.text_field :postal_code %>
+  </div>
+
+  <div class="field">
+    住所
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    電話番号
+    <%= f.text_field :telephone_number %>
+  </div>
+
+  <div class="field">
+    メールアドレス
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <h4><%= f.submit "Update User" %></h4>
+<% end %>
