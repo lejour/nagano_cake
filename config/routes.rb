@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get '/customers/current_customer' => 'customers#show'
   get '/customers/current_customer/edit' => 'customers#edit'
+  patch '/customers/current_customer' => 'customers#update'
 
   root to: "homes#top"
   get 'home/about' => 'homes#about', as: 'about'
