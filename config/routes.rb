@@ -11,6 +11,16 @@ Rails.application.routes.draw do
   get '/customers/current_customer' => 'customers#show'
   get '/customers/current_customer/edit' => 'customers#edit'
   patch '/customers/current_customer' => 'customers#update'
+  get '/customers/confirm_withdraw' => 'customers#confirm_withdraw'
+  patch '/customers/withdraw' => 'customers#withdraw'
+
+  namespace :admin do
+    resources :items
+  end
+
+  namespace :public do
+    resources :items
+  end
 
   root to: "homes#top"
   get 'home/about' => 'homes#about', as: 'about'

@@ -19,6 +19,17 @@ class Public::CustomersController < ApplicationController
 
   end
 
+  def confirm_withdraw
+    @customer = Customer.find_by(name: params[:email])
+  end
+
+  def withdraw
+    @customer = Customer.find_by(name: params[:email])
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+  end
+
 
   private
 
