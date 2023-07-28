@@ -8,14 +8,14 @@
     </tr>
   </thead>
   <tbody>
-    <% @books.each do |book| %>
+    <% @items.each_with_index do |item, i| %>
     <tr>
-      <td><%= book.title %></td>
-      <td><%= book.body %></td>
-      <td><%= link_to 'Show', book_path(book.id) %></td>
-      <td><%= link_to 'Edit', edit_book_path(book.id) %></td>
-      <td><%= link_to 'Destroy', book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %></td>
+      <td><%= i + 1 %></td>
+      <td><%= item.name %></td>
+      <td><%= item.price %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= paginate items %>
