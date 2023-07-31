@@ -5,7 +5,7 @@
   <% else %>
     <%= image_tag 'no_image', size: "200x200" %>
   <% end %>
-  
+
   <table class="table">
     <tbody>
       <tr>
@@ -22,3 +22,5 @@
       </tr>
     </tbody>
   </table>
+
+  <div><%= link_to "編集する", edit_admin_item_path(@item) %></div>

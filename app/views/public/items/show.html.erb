@@ -1,0 +1,11 @@
+<%= image_tag @item.get_image %>
+
+<%= @item.name %>
+
+<%= @item.introduction %>
+
+<div class = "price">
+  ¥<%= @item.add_tax_price.to_s(:dalimited) %><p>(税込)</p>
+</div>
+
+<%= f.select :amount, *[1..10] %>

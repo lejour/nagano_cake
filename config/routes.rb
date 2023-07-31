@@ -8,11 +8,20 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  get '/customers/current_customer' => 'customers#show'
-  get '/customers/current_customer/edit' => 'customers#edit'
-  patch '/customers/current_customer' => 'customers#update'
-  get '/customers/confirm_withdraw' => 'customers#confirm_withdraw'
-  patch '/customers/withdraw' => 'customers#withdraw'
+
+
+  namespace :admin do
+    resources :customers
+  end
+
+  namespace :public do
+    get '/customers/current_customer' => 'customers#show'
+    get '/customers/current_customer/edit' => 'customers#edit'
+    patch '/customers/current_customer' => 'customers#update'
+    get '/customers/confirm_withdraw' => 'customers#confirm_withdraw'
+    patch '/customers/withdraw' => 'customers#withdraw'
+  end
+
 
   namespace :admin do
     resources :items

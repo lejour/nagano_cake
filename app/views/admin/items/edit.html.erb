@@ -1,2 +1,17 @@
-<h4>商品詳細</h4>
+<h4>商品編集</h4>
 
+      <%= form_with model: @item do |f| %>
+      <h6>商品画像</h6>
+      <%= f.file_field :image, accept: "image/*" %>
+
+      <h6>商品名</h6>
+      <%= f.text_field :name %>
+
+      <h6>Introduction</h6>
+      <%= f.text_area :introduction %>
+
+      <h6>税抜き価格</h6>
+      <%= f.text_field :price %>
+
+      <h4><%= f.submit "変更を保存" %></h4>
+      <% end %>

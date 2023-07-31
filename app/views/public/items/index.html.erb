@@ -1,0 +1,16 @@
+<h2>商品一覧<h4>全x件</h4></h2>
+
+<% @items.each do |item| %>
+
+  <%= link_to public_item_path(item.id) do %>
+    <%= image_tag item.get_image %>
+  <% end %>
+  
+  <%= item.name %>
+
+
+  <%= item.price %>
+
+<% end %>
+
+<%= paginate items %>
