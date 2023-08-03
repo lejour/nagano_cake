@@ -31,6 +31,12 @@ Rails.application.routes.draw do
     resources :items
   end
 
+  get '/cart_items' => 'cart_items#index'
+  patch '/cart_items/:id' => 'cart_items#update'
+  delete '/cart_items/:id' => 'cart_items#destroy'
+  delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+  post '/cart_items' => 'cart_items#create'
+
   root to: "homes#top"
   get 'home/about' => 'homes#about', as: 'about'
 

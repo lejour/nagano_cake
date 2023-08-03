@@ -8,4 +8,4 @@
   ¥<%= @item.add_tax_price.to_s(:dalimited) %><p>(税込)</p>
 </div>
 
-<%= f.select :amount, *[1..10] %>
+<%= f.select :@cart_items.amount, *[1..10] %>
