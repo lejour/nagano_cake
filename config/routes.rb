@@ -37,6 +37,20 @@ Rails.application.routes.draw do
   delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
   post '/cart_items' => 'cart_items#create'
 
+  namespace :admin do
+    get '/admin/orders/:id' => 'orders#show'
+  end
+
+  namespace :public do
+    get '/orders/new' => 'orders#new'
+    post '/orders/confirm' => 'orders#confirm'
+    get '/orders/finish' => 'orders#finish'
+    post '/orders' => 'orders#create'
+    get '/orders' => 'orders#index'
+    get '/orders/:id' => 'orders#show'
+  end
+
+
   root to: "homes#top"
   get 'home/about' => 'homes#about', as: 'about'
 

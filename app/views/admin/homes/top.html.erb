@@ -1,0 +1,22 @@
+<h4>注文履歴一覧</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文個数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each_with_index do |item, i| %>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate items %>
