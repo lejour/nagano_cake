@@ -6,12 +6,26 @@ class ApplicationController < ActionController::Base
                                       keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number])
   end
 
-  def after_sign_in_path_for(resource)
+  def after_sign_in_path_for(resource_or_scope)
+    if resource_or_scope.is_a?(Admin)
+        admin_path
+    else
+        root_path
+    end
+  end
+
+  def after_sign_up_path_for(resource)
     customers_current_customer_path
   end
 
-  def after_sign_out_path_for(resource)
-    root_path
+  def after_sign_out_path_for(resource_or_scope)
+    if resource_or_scope == :customer
+        root_path
+    elsif resource_or_scope == :admin
+        new_admin_session_path
+    else
+        root_path
+    end
   end
 
 end

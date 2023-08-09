@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :customers
   end
 
-  namespace :public do
+  scope module: :public do
     get '/customers/current_customer' => 'customers#show'
     get '/customers/current_customer/edit' => 'customers#edit'
     patch '/customers/current_customer' => 'customers#update'
@@ -37,8 +37,8 @@ Rails.application.routes.draw do
   delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
   post '/cart_items' => 'cart_items#create'
 
-  namespace :admin do
-    get '/admin/orders/:id' => 'orders#show'
+  scope module: :admin do
+    get '/admin/orders/:id' => 'orders#show', as: 'admin_orders'
   end
 
   namespace :public do
@@ -51,7 +51,13 @@ Rails.application.routes.draw do
   end
 
 
-  root to: "homes#top"
-  get 'home/about' => 'homes#about', as: 'about'
+  scope module: :public do
+    root to: "homes#top"
+    get '/about' => 'homes#about', as: 'about'
+  end
+
+  scope module: :admin do
+    get '/admin' => "homes#top", as: 'admin'
+  end
 
 end
