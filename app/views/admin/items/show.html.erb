@@ -10,15 +10,15 @@
     <tbody>
       <tr>
         <th>商品名</th>
-        <th><%= item.name %></th>
+        <th><%= @item.name %></th>
       </tr>
       <tr>
         <th>商品説明</th>
-        <th><%= item.introduction %></th>
+        <th><%= @item.introduction %></th>
       </tr>
       <tr>
-        <th>税込価格(税抜価格)</th>
-        <th><%= item.price %></th>
+        <th>税込価格<br>(税抜価格)</th>
+        <th><%= (@item.price * 1.1).floor %>(<%= @item.price %>)円</th>
       </tr>
     </tbody>
   </table>

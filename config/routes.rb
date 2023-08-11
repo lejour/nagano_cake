@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     resources :items
   end
 
-  namespace :public do
+  scope module: :public do
     resources :items
   end
 

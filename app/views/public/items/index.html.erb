@@ -1,16 +1,35 @@
-<h2>商品一覧<h4>全x件</h4></h2>
-
-<% @items.each do |item| %>
-
-  <%= link_to public_item_path(item.id) do %>
-    <%= image_tag item.get_image %>
-  <% end %>
-  
-  <%= item.name %>
+<table>
+  <tr><th><h2>商品一覧</h2></th><td><h4>(全x件)</h4></td></tr>
+</table>
 
 
-  <%= item.price %>
 
-<% end %>
+<table>
+  <tbody>
+    <tr>
+      <% @items.each do |item| %>
+      <td>
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_image, size: "200x150" %>
+          <% end %>
+      </td>
+      <% end %>
+    </tr>
+    <tr>
+      <% @items.each do |item| %>
+      <td>
+          <%= item.name %>
+      </td>
+      <% end %>
+    </tr>
+    <tr>
+      <% @items.each do |item| %>
+      <td>
+          ¥<%= item.price %>
+      </td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
 
-<%= paginate items %>
+<%= paginate @items %>

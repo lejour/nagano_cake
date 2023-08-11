@@ -1,11 +1,13 @@
-<%= image_tag @item.get_image %>
+<%= image_tag @item.get_image, size: "300x225" %>
 
 <%= @item.name %>
 
 <%= @item.introduction %>
 
-<div class = "price">
-  ¥<%= @item.add_tax_price.to_s(:dalimited) %><p>(税込)</p>
-</div>
+¥<%= (@item.price * 1.1).floor %>(税込)
 
-<%= f.select :@cart_items.amount, *[1..10] %>
+<%= form_with model: CartItem.new do |f| %>
+
+<%= f.select :amount, *[1..10] %>
+
+<% end %>
