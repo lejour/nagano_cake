@@ -12,11 +12,11 @@
     <% @customers.each_with_index do |customer, i| %>
     <tr>
       <td><%= i + 1 %></td>
-      <td><%= customer.full_name %></td>
+      <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
       <td><%= customer.email %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= paginate items %>
+<%= paginate @customers %>

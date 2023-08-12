@@ -1,28 +1,41 @@
 <h4><%= @customer.full_name %>さんの会員情報編集</h4>
 
-<%= form_with model: @customer do |f| %>
+<%= form_with model: @customer, url:admin_customer_path do |f| %>
 
-  <h6>会員ID</h6>
-  <%= @customer.id %>
-
-  <h6>氏名</h6>
-  <%= f.text_field :first_name %><%= f.text_field :last_name %>
-
-  <h6>フリガナ</h6>
-  <%= f.text_field :first_name_kana %><%= f.text_field :last_name_kana %>
-
-  <h6>郵便番号</h6>
-  <%= f.text_field :postal_code %>
-
-  <h6>住所</h6>
-  <%= f.text_field :address %>
-
-  <h6>電話番号</h6>
-  <%= f.text_field :telephone_number %>
-
-  <h6>メールアドレス</h6>
-  <%= f.text_field :email %>
-
-  <h4><%= f.submit "変更を保存" %></h4>
-
+<table class="table">
+  <tbody>
+    <tr>
+      <td>会員ID</td>
+      <td><%= @customer.id %></td>
+    </tr>
+    <tr>
+      <td>氏名</td>
+      <td><%= f.text_field :first_name %><%= f.text_field :last_name %></td>
+    </tr>
+    <tr>
+      <td>フリガナ</td>
+      <td><%= f.text_field :first_name_kana %><%= f.text_field :last_name_kana %></td>
+    </tr>
+    <tr>
+      <td>郵便番号</td>
+      <td><%= f.text_field :postal_code %></td>
+    </tr>
+    <tr>
+      <td>住所</td>
+      <td><%= f.text_field :address, :size=>"60" %></td>
+    </tr>
+    <tr>
+      <td>電話番号</td>
+      <td><%= f.text_field :telephone_number %></td>
+    </tr>
+    <tr>
+      <td>メールアドレス</td>
+      <td><%= f.text_field :email %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.submit "変更を保存" %></td>
+    </tr>
+  </tbody>
+</table>
 <% end %>

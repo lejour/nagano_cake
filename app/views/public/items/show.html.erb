@@ -1,13 +1,35 @@
-<%= image_tag @item.get_image, size: "300x225" %>
-
-<%= @item.name %>
-
-<%= @item.introduction %>
-
-¥<%= (@item.price * 1.1).floor %>(税込)
-
-<%= form_with model: CartItem.new do |f| %>
-
-<%= f.select :amount, *[1..10] %>
-
-<% end %>
+<table>
+  <tbody>
+    <tr>
+      <td rowspan="3">
+        <%= image_tag @item.get_image, size: "300x225" %>
+      </td>
+      <td>
+        <%= @item.name %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= @item.introduction %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        ¥<%= (@item.price * 1.1).floor %>(税込)
+      </td>
+    </tr>
+    <%= form_with model: CartItem.new do |f| %>
+    <tr>
+      <td>
+      </td>
+      <td>
+        <%= f.select :amount, *[1..10], { include_blank: '個数選択'} %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+      </td>
+      <td>
+        <%= f.submit "カートに入れる" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
