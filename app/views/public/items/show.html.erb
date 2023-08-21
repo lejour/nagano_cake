@@ -18,7 +18,7 @@
         ¥<%= (@item.price * 1.1).floor %>(税込)
       </td>
     </tr>
-    <%= form_with model: CartItem.new do |f| %>
+    <%= form_with model: @cart_item do |f| %>
     <tr>
       <td>
       </td>
