@@ -21,7 +21,10 @@ Rails.application.routes.draw do
     get '/customers/confirm_withdraw' => 'customers#confirm_withdraw'
     patch '/customers/withdraw' => 'customers#withdraw'
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
-    resources :cart_items
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    resources :orders, only: [:new, :index, :create, :show,]
+    post '/orders/confirm' => 'orders#confirm'
+    get '/orders/finish' => 'orders#finish'
   end
 
 
@@ -41,16 +44,6 @@ Rails.application.routes.draw do
   scope module: :admin do
     get '/admin/orders/:id' => 'orders#show', as: 'admin_orders'
   end
-
-  namespace :public do
-    get '/orders/new' => 'orders#new'
-    post '/orders/confirm' => 'orders#confirm'
-    get '/orders/finish' => 'orders#finish'
-    post '/orders' => 'orders#create'
-    get '/orders' => 'orders#index'
-    get '/orders/:id' => 'orders#show'
-  end
-
 
   scope module: :public do
     root to: "homes#top"
