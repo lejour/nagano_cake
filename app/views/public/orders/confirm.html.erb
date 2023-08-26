@@ -3,18 +3,21 @@
 <table>
   <thead>
     <tr>
-      <th>商品名</th>
+      <th colspan="3">商品名</th>
       <th>単価(税込)</th>
       <th>数量</th>
       <th>小計</th>
     </tr>
   </thead>
   <tbody>
-    <% @orders.each do |order| %>
+    <% @cart_items.each do |cart_item| %>
+    <% @total_amount = @total_amount + cart_item.subtotal %>
+    <% @billing = @total_amount + @order.postage %>
     <tr>
-      <td><%= order.item.name %></td>
-      <td><%= (order.item.price * 1.1).floor %></td>
-      <td></td>
+      <td colspan="3"><%= cart_item.item.name %></td>
+      <td><%= (cart_item.item.price * 1.1).floor %></td>
+      <td><%= cart_item.amount %></td>
+      <td><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
     </tr>
     <% end %>
   </tbody>
@@ -28,16 +31,31 @@
     </tr>
     <tr>
       <th>商品合計</th>
-      <th><%= @order.total_amount %></th>
+      <th><%= @total_amount %></th>
     </tr>
     <tr>
       <th>請求金額</th>
-      <th></th>
+      <th><%= @billing %></th>
     </tr>
   </tbody>
 </table>
 
 <h5>支払方法</h5>
+<%= @order.payment_i18n %>
 
 
 <h5>お届け先</h5>
+<%= @order.address_display %>
+
+<%= form_with model: @order do |f| %>
+
+<%= f.hidden_field :name %>
+<%= f.hidden_field :postal_code %>
+<%= f.hidden_field :address %>
+<%= f.hidden_field :total_amount, :value => @total_amount %>
+<%= f.hidden_field :payment %>
+<%= f.hidden_field :postage %>
+<%= f.submit "注文を確定する" %>
+
+<% end %>
+

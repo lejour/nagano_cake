@@ -8,7 +8,7 @@ class Order < ApplicationRecord
   end
 
   def address_display
-    '〒' + current_customer.postal_code + ' ' + current_customer.address + ' ' + current_customer.full_name
+    '〒' + postal_code + ' ' + address + ' ' + name
   end
 
 end

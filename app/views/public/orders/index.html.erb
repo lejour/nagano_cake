@@ -11,11 +11,11 @@
     </tr>
   </thead>
   <tbody>
-    <% @.each do || %>
+    <% @orders.each do |order| %>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= order.address_display %></td>
+      <td><%= order.order_detail.item_id %></td>
       <td></td>
     </tr>
     <% end %>
