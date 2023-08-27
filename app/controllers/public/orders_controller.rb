@@ -8,6 +8,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    
   end
 
   def confirm
@@ -35,6 +37,7 @@ class Public::OrdersController < ApplicationController
         order_detail.order_id = @order.id
         order_detail.quantity = cart_item.amount
         order_detail.tax_price = cart_item.item.price * 1.1
+        order_detail.save
       end
       redirect_to orders_finish_path
       cart_items.destroy_all
