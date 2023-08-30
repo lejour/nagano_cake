@@ -5,11 +5,14 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    @total = 0
   end
 
   def show
     @order = Order.find(params[:id])
-    
+    @order_detail = @order.order_details
+    @total = 0
+
   end
 
   def confirm
@@ -51,7 +54,11 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-      params.require(:order).permit(:postal_code, :address, :name, :total_amount, :postage, :payment, :customer_id,)
+      params.require(:order).permit(:postal_code, :address, :name, :total_amount, :postage, :payment, :customer_id)
+  end
+
+  def order_detail_params
+      params.require(:order_detail).permit(:order_id, :item_id, :quantity, :tax_price)
   end
 
 end

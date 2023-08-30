@@ -4,19 +4,19 @@
   <tbody>
     <tr>
       <th>購入者</th>
-      <th></th>
+      <th><%= @order.name %></th>
     </tr>
     <tr>
       <th>注文日</th>
-      <th></th>
+      <th><%= @order.created_at.strftime('%Y/%m/%d') %></th>
     </tr>
     <tr>
       <th>配送先</th>
-      <th></th>
+      <th><%= @order.address_display %></th>
     </tr>
     <tr>
       <th>支払方法</th>
-      <th></th>
+      <th><%= @order.payment_i18n %></th>
     </tr>
   </tbody>
 </table>
@@ -32,11 +32,12 @@
     </tr>
   </thead>
   <tbody>
-    <% @.each do || %>
+    <% @order_detail.each do |order_detail| %>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><%= order_detail.item.name %></td>
+      <td><%= order_detail.tax_price %></td>
+      <td><%= order_detail.quantity %></td>
+      <td><%= order_detail.tax_price * order_detail.quantity %></td>
     </tr>
     <% end %>
   </tbody>
@@ -47,15 +48,15 @@
   <tbody>
     <tr>
       <th>商品合計</th>
-      <th></th>
+      <th><%= @order.total_amount %></th>
     </tr>
     <tr>
       <th>送料</th>
-      <th></th>
+      <th><%= @order.postage %></th>
     </tr>
     <tr>
       <th>請求金額合計</th>
-      <th></th>
+      <th><%= @order.total_amount + @order.postage %></th>
     </tr>
   </tbody>
 </table>
