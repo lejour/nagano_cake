@@ -1,37 +1,55 @@
-<%= form_with model: @cart_item do |f| %>
-<table>
-  <tbody>
-    <tr>
-      <td rowspan="3">
-        <%= image_tag @item.get_image, size: "300x225" %>
-      </td>
-      <td>
-        <%= @item.name %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= @item.introduction %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        ¥<%= (@item.price * 1.1).floor %>(税込)
-      </td>
-    </tr>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3"></div>
 
-    <tr>
-      <td>
-      </td>
-      <td>
-        <%= f.select :amount, *[1..10], { include_blank: '個数選択'} %>
-        <%= f.hidden_field :item_id, :value => @item.id %>
-      </td>
-      <td>
-        <%= f.submit "カートに入れる" %>
-      </td>
-    </tr>
+    <div class="col-lg-8">
+      <div class="box" style="margin-top:50px">
+        <%= form_with model: @cart_item do |f| %>
+        <table>
+          <tbody>
+            <tr>
+              <td rowspan="3">
+                <%= image_tag @item.get_image, size: "300x225" %>
+              </td>
+              <td>
+                <h4 class="box" style="margin-left:30px">
+                <%= @item.name %>
+                </h4>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="box" style="margin-left:30px">
+                <%= @item.introduction %>
+                </h4>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="box" style="margin-left:30px">
+                ¥<%= (@item.price * 1.1).floor %>(税込)
+                </h4>
+              </td>
+            </tr>
 
-  </tbody>
-</table>
-<% end %>
+            <tr>
+              <td>
+              </td>
+              <td>
+                <div class="box" style="margin-left:30px">
+                <%= f.select :amount, *[1..10], { include_blank: '個数選択'} %>
+                <%= f.hidden_field :item_id, :value => @item.id %>
+                </div>
+              </td>
+              <td>
+                <%= f.submit "カートに入れる",class: "text-white bg-success" %>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,22 +1,63 @@
-<h4>注文情報入力</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-1" style="padding:50px 0 0 0;">
+    </div>
+    <div class="col-lg-2" style="padding:50px 0 0 0;">
+     <h5 class="bg-light text-center">注文情報入力</h5>
+    </div>
+  </div>
 
-<h5>支払方法</h5>
-<%= form_with model: @order, url: orders_confirm_path do |f| %>
-  <%= f.radio_button :payment, Order.payments.key(0) %>
-  <%= f.label :payment_credit_card, Order.payments_i18n[:credit_card] %>
-  <%= f.radio_button :payment, Order.payments.key(1) %>
-  <%= f.label :payment_transfer, Order.payments_i18n[:transfer] %>
+  <div class="row">
 
-<h5>お届け先</h5>
-<table>
-  <tr>
-    <td>〒<%= current_customer.postal_code %></td>
-    <td><%= current_customer.address %></td>
-  </tr>
-  <tr>
-    <td><%= current_customer.full_name %></td>
-  </tr>
-</table>
+      <h5 class="col-lg-2" style="padding:0 0 0 50px;">支払方法</h5>
+  </div>
+  <div class="row">
+    <div class="col-lg-1">
+    </div>
+    <div class="col-lg-2">
+      <%= form_with model: @order, url: orders_confirm_path do |f| %>
+      <div>
+        <%= f.radio_button :payment, Order.payments.key(0) %>
+        <%= f.label :payment_credit_card, Order.payments_i18n[:credit_card] %>
+      </div>
+      <div>
+        <%= f.radio_button :payment, Order.payments.key(1) %>
+        <%= f.label :payment_transfer, Order.payments_i18n[:transfer] %>
+      </div>
+    </div>
+  </div>
 
-<%= f.submit "確認画面へ進む" %>
-<% end %>
+  <div class="row">
+
+      <h5 class="col-lg-2" style="padding:0 0 0 50px;">お届け先</h5>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-1">
+    </div>
+    <div>
+
+      <table>
+        <tr>
+          <td>〒<%= current_customer.postal_code %></td>
+          <td><%= current_customer.address %></td>
+        </tr>
+        <tr>
+          <td><%= current_customer.full_name %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-5" style="margin-top:100px">
+    </div>
+    <div class="col-lg-2" style="margin-top:100px">
+      <%= f.submit "確認画面へ進む",class: "text-white bg-primary" %>
+      <% end %>
+    </div>
+    <div class="col-lg-5" style="margin-top:100px">
+    </div>
+  </div>
+
+</div>
