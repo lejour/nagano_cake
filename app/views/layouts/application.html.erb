@@ -17,13 +17,17 @@
           <div class="col-lg-3">
             <button type="button" class="btn btn-block border"><h2><%= link_to "LOGO", root_path %></h2></button>
           </div>
-          <div class="col-lg-3">
+          <div class="col-lg-1"></div>
+          <div class="col-lg-2" style="margin-top:10px">
+            <% if customer_signed_in? %>
+              <p>ようこそ、<%= current_customer.first_name %>さん!</p>
+            <% end %>
           </div>
             <div class="col-lg-6">
               <div class="collapse navbar-collapse">
                 <ul class="navbar-nav w-100 nav-justified">
                   <% if customer_signed_in? %>
-                      <li class="nav-item"><%= link_to "マイページ", customers_current_customer_path %></li>
+                    <li class="nav-item"><%= link_to "マイページ", customers_current_customer_path %></li>
                     <li class="nav-item"><%= link_to "商品一覧", items_path %></li>
                     <li class="nav-item"><%= link_to "カート", cart_items_path %></li>
                     <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>

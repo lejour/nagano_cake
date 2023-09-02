@@ -11,7 +11,6 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-      flash[:notice] = "You have updated user successfully."
       redirect_to customers_current_customer_path(@customer)
     else
       render :edit
@@ -20,11 +19,10 @@ class Public::CustomersController < ApplicationController
   end
 
   def confirm_withdraw
-    @customer = Customer.find_by(name: params[:email])
   end
 
   def withdraw
-    @customer = Customer.find_by(name: params[:email])
+    @customer = current_customer
     @customer.update(is_deleted: true)
     reset_session
     redirect_to root_path
