@@ -1,22 +1,37 @@
-<h4>会員一覧</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-1" style="padding:50px 0 0 0;">
+    </div>
+    <div class="col-lg-2" style="padding:50px 20px 0 20px;">
+      <h5 class="bg-light text-center">会員一覧</h5>
+    </div>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>会員ID</th>
-      <th>氏名</th>
-      <th>メールアドレス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @customers.each_with_index do |customer, i| %>
-    <tr>
-      <td><%= i + 1 %></td>
-      <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
-      <td><%= customer.email %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="row">
+    <div class="col-lg-2" style="padding:10px 0 0 0;">
+    </div>
+    <div class="col-lg-8" style="padding:50px 0 0 0;">
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="bg-light">会員ID</th>
+            <th class="bg-light">氏名</th>
+            <th class="bg-light">メールアドレス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each_with_index do |customer, i| %>
+          <tr>
+            <td><%= i + 1 %></td>
+            <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
+            <td><%= customer.email %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 <%= paginate @customers %>

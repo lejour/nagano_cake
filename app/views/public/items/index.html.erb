@@ -13,24 +13,42 @@
   <div class="row">
     <div class="col-lg-3" style="margin-top:10px"></div>
     <div class="col-lg-8" style="margin-top:10px">
+      <div class="d-flex flex-wrap">
 
-      <% @items.each do |item| %>
-      <div class="col-lg-3" style="margin-top:10px">
-        <%= link_to item_path(item.id) do %>
-          <%= image_tag item.get_image, size: "200x150" %>
+
+        <% @items.each do |item| %>
+        <div style="margin-right:10px;">
+          <div class="card">
+            <div>
+              <%= link_to item_path(item.id) do %>
+                <%= image_tag item.get_image, size: "150x100" %>
+              <% end %>
+            </div>
+          </div>
+          <div class="card-body">
+            <div>
+              <%= item.name %>
+            </div>
+            <div>
+              ¥<%= item.price %>
+            </div>
+          </div>
+        </div>
         <% end %>
+
       </div>
-      <div class="col-lg-3" style="margin-top:10px">
-        <%= item.name %>
-      </div>
-      <div class="col-lg-3" style="margin-top:10px">
-        ¥<%= item.price %>
-      </div>
-      <% end %>
     </div>
     <div class="col-lg-1" style="margin-top:10px"></div>
   </div>
 
-<%= paginate @items %>
+  <div class="row">
+    <div class="col-lg-6" style="margin-top:50px"></div>
+    <div class="col-lg-2" style="margin-top:50px">
+      <%= paginate @items %>
+    </div>
+    <div class="col-lg-4" style="margin-top:50px"></div>
+  </div>
+
+
 
 </div>

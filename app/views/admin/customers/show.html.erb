@@ -1,40 +1,54 @@
-<h4><%= @customer.full_name %>さんの会員詳細</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-1" style="padding:50px 0 0 0;">
+    </div>
+    <div class="col-lg-4" style="padding:50px 20px 0 20px;">
+      <h5 class="bg-light text-center"><%= @customer.full_name %>さんの会員詳細</h5>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-lg-1" style="padding:50px 0 0 0;">
+    </div>
+    <div class="col-lg-6" style="padding:50px 0 0 0;">
 
-<table class="table">
-  <tbody>
-    <tr>
-      <td>会員ID</td>
-      <td><%= @customer.id %></td>
-    </tr>
-    <tr>
-      <td>氏名</td>
-      <td><%= @customer.full_name %></td>
-    </tr>
-    <tr>
-      <td>フリガナ</td>
-      <td><%= @customer.full_name_kana %></td>
-    </tr>
-    <tr>
-      <td>郵便番号</td>
-      <td><%= @customer.postal_code %></td>
-    </tr>
-    <tr>
-      <td>住所</td>
-      <td colspan="2"><%= @customer.address %></td>
-    </tr>
-    <tr>
-      <td>電話番号</td>
-      <td><%= @customer.telephone_number %></td>
-    </tr>
-    <tr>
-      <td>メールアドレス</td>
-      <td><%= @customer.email %></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><%= link_to "編集する", edit_admin_customer_path(@customer) %></td>
-      <td><%= link_to "注文履歴一覧を見る", admin_path %></td>
-    </tr>
-  </tbody>
-</table>
+      <table>
+        <tbody>
+          <tr>
+            <td>会員ID</td>
+            <td><%= @customer.id %></td>
+          </tr>
+          <tr>
+            <td><div class="box" style="margin-top:20px">氏名</div></td>
+            <td><div class="box" style="margin-top:20px"><%= @customer.full_name %></div></td>
+          </tr>
+          <tr>
+            <td><div class="box" style="margin-top:20px">フリガナ</div></td>
+            <td><div class="box" style="margin-top:20px"><%= @customer.full_name_kana %></div></td>
+          </tr>
+          <tr>
+            <td><div class="box" style="margin-top:20px">郵便番号</div></td>
+            <td><div class="box" style="margin-top:20px"><%= @customer.postal_code %></div></td>
+          </tr>
+          <tr>
+            <td><div class="box" style="margin-top:20px">住所</div></td>
+            <td colspan="2"><div class="box" style="margin-top:20px"><%= @customer.address %></div></td>
+          </tr>
+          <tr>
+            <td><div class="box" style="margin-top:20px">電話番号</div></td>
+            <td><div class="box" style="margin-top:20px"><%= @customer.telephone_number %></div></td>
+          </tr>
+          <tr>
+            <td><div class="box" style="margin:20px 50px 0 0">メールアドレス</div></td>
+            <td><div class="box" style="margin-top:20px"><%= @customer.email %></div></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><div class="box" style="margin-top:20px"><%= link_to "編集する", edit_admin_customer_path(@customer),class: "btn btn-success center-block" %></div></td>
+            <td><div class="box" style="margin-top:20px"><%= link_to "注文履歴一覧を見る", admin_path,class: "btn btn-primary center-block" %></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
