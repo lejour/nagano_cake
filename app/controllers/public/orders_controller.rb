@@ -4,7 +4,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.page(params[:page]).per(8)
+    @orders = current_customer.orders.page(params[:page]).per(8)
     @total = 0
   end
 

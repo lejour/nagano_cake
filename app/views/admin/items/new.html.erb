@@ -1,17 +1,44 @@
-    <h4>商品新規登録</h4>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-1" style="padding:50px 0 0 0;">
+    </div>
+    <div class="col-lg-2" style="padding:50px 20px 0 20px;">
+      <h5 class="bg-light text-center">商品新規登録</h5>
+    </div>
+   </div>
+
+  <div class="row">
+    <div class="col-lg-3" style="padding:50px 0 0 0;">
+    </div>
+    <div class="col-lg-6" style="padding:50px 0 0 0;">
 
       <%= form_with model: @item, url:admin_items_path do |f| %>
-      <h6>商品画像</h6>
-      <%= f.file_field :image, accept: "image/*" %>
+      <table>
+        <tr>
+          <td>商品画像</td>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
 
-      <h6>商品名</h6>
-      <%= f.text_field :name %>
+        <tr>
+          <td>商品名</td>
+          <td><%= f.text_field :name, size: "35" %></td>
+        </tr>
 
-      <h6>商品説明</h6>
-      <%= f.text_area :introduction %>
+        <tr>
+          <td>商品説明</td>
+          <td><%= f.text_area :introduction, size: "37x5" %></td>
+        </tr>
 
-      <h6>税抜き価格</h6>
-      <%= f.text_field :price %>
+        <tr>
+          <td>税抜価格</td>
+          <td><%= f.text_field :price, size: "35" %>円</td>
+        </tr>
+      </table>
 
-      <h4><%= f.submit "新規登録" %></h4>
+      <h4><%= f.submit "新規登録",class: "btn btn-success center-block", style: "margin:80px 0 0 150px; padding:5px 30px 5px 30px;" %></h4>
       <% end %>
+    </div>
+  </div>
+
+</div>
