@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-1" style="padding:50px 0 0 0;">
+    </div>
+    <div class="col-lg-2" style="padding:50px 20px 0 20px;">
+      <h5 class="bg-light text-center">商品一覧</h5>
+    </div>
+    <div class="col-lg-7" style="padding:50px 0 0 0;">
+    </div>
+    <div class="col-lg-1" style="padding:50px 0 0 0;">
+      <button type="button" class="btn btn-light rounded-circle p-0" style="width:2rem;height:2rem;">
+        <%= link_to "＋", new_admin_item_path, class: "text-decoration-none" %>
+      </button>
+    </div>
+    <div class="col-lg-1" style="padding:50px 0 0 0;">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-1" style="padding:10px 0 0 0;">
+    </div>
+    <div class="col-lg-10" style="padding:10px 0 0 0;">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each_with_index do |item, i| %>
+          <tr>
+            <td><%= i + 1 %></td>
+            <td><%= link_to item.name, admin_item_path(item.id) %></td>
+            <td><%= item.price %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-5" style="padding:10px 0 0 0;">
+    </div>
+    <div class="col-lg-2" style="padding:10px 0 0 0;">
+      <%= paginate @items %>
+    </div>
+
+      <div class="col-lg-5" style="padding:10px 0 0 0;">
+    </div>
+  </div>
+</div>

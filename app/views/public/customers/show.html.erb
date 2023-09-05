@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-1" style="padding:50px 0 0 0;">
+    </div>
+    <div class="col-lg-2" style="padding:50px 20px 0 20px;">
+     <h5 class="bg-light text-center">マイページ</h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-1" style="padding:50px 0 0 0;">
+      <h5>登録情報</h5>
+    </div>
+    <div class="col-lg-2" style="padding:50px 0 0 0;">
+      <%= link_to "編集する", customers_current_customer_edit_path(@customer),class: "text-white btn btn-success", style: "padding:2px 20px 2px 20px;" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-7" style="padding:30px 0 0 0;">
+      <table class="table table-bordered">
+          <tr>
+            <th>氏名</th>
+            <th><%= @customer.full_name %></th>
+          </tr>
+          <tr>
+            <th>カナ</th>
+            <th><%= @customer.full_name_kana %></th>
+          </tr>
+          <tr>
+            <th>郵便番号</th>
+            <th><%= @customer.postal_code %></th>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <th><%= @customer.address %></th>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <th><%= @customer.telephone_number %></th>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <th><%= @customer.email %></th>
+          </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-1" style="padding:100px 0 0 0;">
+      <h5>注文履歴</h5>
+    </div>
+    <div class="col-lg-2" style="padding:100px 0 0 0;">
+      <%= link_to "一覧を見る", orders_path,class: "text-white btn btn-primary", style: "padding:2px 20px 2px 20px;" %>
+    </div>
+
+
+  </div>
+</div>
