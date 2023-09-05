@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3" style="padding:0 50px 0 0;">
+      <div class="border text-center" style="margin:30px 10px 0 10px;">
+        ジャンル検索
+      </div>
+      <div class="border" style="margin:0px 10px 0 10px; padding:0 0 100px 0;">
+        <li class="list-unstyled" style="padding:10px;">ケーキ</li>
+        <li class="list-unstyled" style="padding:10px;">焼き菓子</li>
+        <li class="list-unstyled" style="padding:10px;">プリン</li>
+        <li class="list-unstyled" style="padding:10px;">キャンディ</li>
+
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="w-100 h-100" style="margin:30px 10px 0 10px;">
+        <div class="border" style="margin:100px 20px 0 100px;">
+          <p style="margin:20px 20px 20px 0;">
+            ようこそ、ながのCAKEへ！<br>
+            このサイトは、ケーキ販売のECサイトになります。<br>
+            会員でない方も商品の閲覧はできますが、<br>
+            購入には会員登録が必要になります。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-6" style="margin-top:20px">
+      <h2>新着商品</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-6" style="margin-top:20px">
+      <table>
+        <tbody>
+          <tr>
+            <% @items.each do |item| %>
+            <td>
+                <%= link_to item_path(item.id) do %>
+                  <%= image_tag item.get_image, size: "200x150" %>
+                <% end %>
+            </td>
+            <% end %>
+          </tr>
+          <tr>
+            <% @items.each do |item| %>
+            <td>
+                <%= item.name %>
+            </td>
+            <% end %>
+          </tr>
+          <tr>
+            <% @items.each do |item| %>
+            <td>
+                ¥<%= item.price %>
+            </td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p class="text-right" style="margin:10px 0 0 30px;">
+    <%= link_to "全ての商品を見る>", items_path %>
+  </p>
+
+</div>

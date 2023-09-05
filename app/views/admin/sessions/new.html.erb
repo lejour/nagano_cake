@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-1" style="padding:50px 0 0 0;">
+    </div>
+    <div class="col-lg-2" style="padding:50px 0 0 0;">
+     <h5 class="bg-light text-center">管理者ログイン</h5>
+    </div>
+  </div>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="row" style="padding:50px 0 100px 250px;">
+      <table>
+        <tbody>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"55"  %></td>
+          </tr>
+
+          <tr>
+            <td><div class="box" style="margin-top:30px">パスワード</div></td>
+            <td><div class="box" style="margin-top:30px"><%= f.password_field :password, autocomplete: "current-password", :size=>"55"  %></div></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td><%= f.submit "ログイン",class: "text-white bg-primary", style: "margin-top:50px; padding:0 50px 0 50px;" %></td>
+          </tr>
+
+        </tbody>
+      </table>
+  </div>
+<% end %>
+
+</div>
+
